@@ -1,0 +1,18 @@
+export default [{
+  name: 'app1',
+  path: 'app1',
+  routes: [{
+    name: 'home',
+    path: ''
+  }]
+}, {
+  name: 'app2',
+  path: 'app2',
+  routes: [{
+    name: 'home',
+    path: ''
+  }, {
+    name: 'about',
+    path: '.about'
+  }]
+}]

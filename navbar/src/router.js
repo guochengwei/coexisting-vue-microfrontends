@@ -1,21 +1,38 @@
 import Router from 'vue-router'
+import apps from './routes'
 
-export default new Router({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes: [
-    // {
-    //   path: '/',
-    //   name: 'home',
-    //   component: Home
-    // },
-    // {
-    //   path: '/about',
-    //   name: 'about',
-    //   // route level code-splitting
-    //   // this generates a separate chunk (about.[hash].js) for this route
-    //   // which is lazy-loaded when the route is visited.
-    //   component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    // }
-  ]
+  routes: []
 })
+let redirectPath = ''
+router.beforeEach((to, from, next) => {
+  const fromPath = from.path
+  const toPath = to.path
+  if (fromPath === '/' || toPath === redirectPath) {
+    redirectPath = ''
+    next()
+    return
+  }
+  const appReg = new RegExp(/\/\w*(?:\.\w*)*(?=\/)*/g)
+  const pathReg = new RegExp(/(\/\w*)|(\.\w*)/g)
+  const apps = []
+  if (to.query.routerAction !== 'no-merge') {
+    apps.push(...fromPath.match(appReg))
+  }
+  const reducer = apps.concat(toPath.match(appReg)).filter(item => item !== null)
+    .reduce((obj, item) => {
+      const path = item.match(pathReg)
+      const app = path.shift()
+      if (app !== '/redirect') {
+        obj[app] = path.join('')
+      }
+      return obj
+    }, {})
+  const nextPath = redirectPath = Object.entries(reducer).reduce((str, [key, value]) => str += (key + value), '')
+  if (nextPath !== fromPath) {
+    router.push({ path: nextPath })
+  }
+})
+export default router

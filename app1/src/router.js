@@ -1,14 +1,17 @@
 import Router from 'vue-router'
 import Home from './views/Home.vue'
 
-export default new Router({
+const prefix = '/:appsBefore*/app1'
+const suffix = '/:appsAfter*'
+
+const router = new Router({
   mode: 'history',
-  base: process.env.BASE_URL,
   routes: [
     {
-      path: '/app1',
+      path: prefix + suffix,
       name: 'home',
       component: Home
-    },
+    }
   ]
 })
+export default router

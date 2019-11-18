@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <router-link to="/app2/about">Go to app2 about page</router-link>
+    <router-link :to="{name:'about'}">Go to app2 about page</router-link>
   </div>
 </template>
 

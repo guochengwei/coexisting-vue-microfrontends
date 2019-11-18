@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "core-js": "^3.2.1",
+    "core-js": "^2.6.9",
     "single-spa-vue": "^1.5.4",
     "systemjs-webpack-interop": "^1.1.0",
     "vue": "^2.6.10",
