@@ -15,4 +15,11 @@ export default [{
     name: 'about',
     path: '.about'
   }]
+}, {
+  name: 'proc',
+  path: 'proc',
+  routes: [{
+    name: 'index',
+    path: ''
+  }]
 }]

@@ -50,7 +50,6 @@ export const mount = function (props) {
             handler: (ev, win) => {
               const appReg = new RegExp(`\\/${props.name}(?:\\.\\w*)*(?=\\/)*`, 'g')
               const path = router.history.current.path.replace(appReg, '')
-              console.log(path)
               router.push({ path: path || '/', query: { 'routerAction': 'no-merge' } }).then(() => win.destroy())
                 .catch(console.log)
             }
