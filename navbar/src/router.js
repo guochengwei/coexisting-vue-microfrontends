@@ -32,7 +32,7 @@ router.beforeEach((to, from, next) => {
     }, {})
   const nextPath = redirectPath = Object.entries(reducer).reduce((str, [key, value]) => str += (key + value), '')
   if (nextPath !== fromPath) {
-    router.replace({ path: nextPath })
+    router.replace({ path: nextPath }).catch(e => console.log(e))
   }
 })
 export default router

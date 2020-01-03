@@ -10,6 +10,7 @@
       {
         "imports": {
           "proc":"http://localhost:7434/app.js",
+          "aptup":"http://localhost:7410/app.js",
           "navbar": "http://localhost:8080/app.js",
           "app1": "http://localhost:8081/app.js",
           "app2": "http://localhost:8082/app.js",
@@ -70,6 +71,16 @@
           return location.pathname.search(appReg) !==-1
         },
         { key: 'proc' }
+      )
+
+      singleSpa.registerApplication(
+        'aptup',
+        () => System.import('aptup'),
+        location => {
+          const appReg = new RegExp(/\/aptup(?:\.\w*)*(?=\/)*/g)
+          return location.pathname.search(appReg) !== -1
+        },
+        { key: 'aptup' }
       )
 
       singleSpa.registerApplication(

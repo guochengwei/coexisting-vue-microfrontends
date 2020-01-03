@@ -22,4 +22,11 @@ export default [{
     name: 'index',
     path: ''
   }]
+}, {
+  name: 'aptup',
+  path: 'aptup',
+  routes: [{
+    name: 'index',
+    path: ''
+  }]
 }]
