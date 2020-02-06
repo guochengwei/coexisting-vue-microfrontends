@@ -15,6 +15,8 @@ vue application**. The root-html-file project should also be in its own repo. Th
 charge of different microfrontends.
 
 ## Local development -- one app at a time
+[Tutorial video](https://www.youtube.com/watch?v=vjjcuIxqIzY&list=PLLUD8RtHvsAOhtHnyGx57EYXoaNsxGrTU&index=4)
+
 With single-spa, it is preferred to run `npm run serve` in only one single-spa application at a time, while using a deployed
 version of the other applications. This makes for an awesome developer experience where you can boot up just one
 microfrontend at a time, not even having to clone, npm install, or boot up all of the other ones.
@@ -27,7 +29,7 @@ npm run serve
 ```
 
 Now go to http://coexisting-vue-microfrontends.surge.sh in a browser. In a browser console, run `localStorage.setItem('overrides-ui', true)`.
-Refresh the page. Now click on the yellowish rectangle at the bottom right. Then click on `app1`. Change the module url to http://localhost:8081/app.js. Then apply the override and reload the page. This will have change app1 to load from your localhost instead of from surge.sh.
+Refresh the page. Now click on the yellowish rectangle at the bottom right. Then click on `app1`. Change the module url to http://localhost:8081/js/app.js. Then apply the override and reload the page. This will have change app1 to load from your localhost instead of from surge.sh.
 As you modify the code locally, it will reload the page on coexisting-vue-microfrontends.surge.sh. See
 https://github.com/joeldenning/import-map-overrides for more info on this.
 
